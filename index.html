@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    name="description"
+    content="Arctic Monkeys temalı, premium görsel kimliğe sahip, Türkçe bir fan sitesi ve üst sabit radyo deneyimi."
+  >
+  <title>Arctic Monkeys Radyo | Premium Fan Deneyimi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Urbanist:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#icerik">İçeriğe geç</a>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="radio-bar" id="radyo">
+    <div class="radio-brand">
+      <div class="brand-mark" aria-hidden="true">AM</div>
+      <div class="brand-copy">
+        <span class="brand-overline">Canlı fan yayını</span>
+        <strong>Arctic Monkeys Radyo</strong>
+      </div>
+    </div>
+
+    <div class="radio-player">
+      <div class="player-controls" aria-label="Müzik kontrolleri">
+        <button class="control-button" type="button" data-control="prev" aria-label="Önceki şarkı">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 5v14" />
+            <path d="M18 7.2 9.8 12 18 16.8V7.2Z" />
+          </svg>
+        </button>
+        <button class="control-button play-button" type="button" data-control="play" aria-label="Oynat">
+          <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 6.5v11l9-5.5-9-5.5Z" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 6h3v12H8zM13 6h3v12h-3z" />
+          </svg>
+        </button>
+        <button class="control-button" type="button" data-control="next" aria-label="Sonraki şarkı">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 5v14" />
+            <path d="M6 7.2 14.2 12 6 16.8V7.2Z" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="player-timeline">
+        <div class="timeline-meta">
+          <span class="live-pill" id="playbackStatus">Şimdi çalıyor</span>
+          <strong id="trackTitle">505</strong>
+          <span id="trackMeta">AM arşivi hazır</span>
+        </div>
+
+        <div class="progress-wrap">
+          <span id="currentTime">0:00</span>
+          <input
+            id="progressBar"
+            class="range-input"
+            type="range"
+            min="0"
+            max="1000"
+            value="0"
+            step="1"
+            aria-label="Şarkı ilerleme çubuğu"
+          >
+          <span id="totalTime">0:00</span>
+        </div>
+      </div>
+
+      <div class="player-mode-controls">
+        <button class="pill-button" type="button" data-control="shuffle" aria-pressed="false">
+          Karışık
+        </button>
+        <button class="pill-button" type="button" data-control="repeat" aria-pressed="true">
+          Tekrar
+          <span id="repeatBadge">Liste</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="radio-side">
+      <div class="side-topline">
+        <span class="side-label">Mini bilgi</span>
+        <strong id="trackCounter">01 / 10</strong>
+      </div>
+
+      <div class="volume-cluster">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 10h4l5-4v12l-5-4H4z" />
+          <path d="M17 9a4 4 0 0 1 0 6" />
+          <path d="M19.5 6.5a7.5 7.5 0 0 1 0 11" />
+        </svg>
+        <input
+          id="volumeBar"
+          class="range-input"
+          type="range"
+          min="0"
+          max="100"
+          value="72"
+          step="1"
+          aria-label="Ses seviyesi"
+        >
+      </div>
+
+      <p class="status-note" id="statusNote">Tarayıcı izin verirse yayın otomatik başlatılacak.</p>
+      <span class="sr-only" id="assistiveStatus" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="site-logo" href="#hero">
+        <span class="site-logo__kicker">Fan atlası</span>
+        <span class="site-logo__title">Arctic Monkeys Arşivi</span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span class="sr-only">Menüyü aç</span>
+      </button>
+
+      <nav class="site-nav" id="siteNav" aria-label="Bölüm menüsü">
+        <a href="#hero">Ana Sahne</a>
+        <a href="#hakkinda">Grup</a>
+        <a href="#sarkilar">Şarkılar</a>
+        <a href="#albumler">Albümler</a>
+        <a href="#sozler">Sözler</a>
+        <a href="#galeri">Galeri</a>
+        <a href="#zaman-cizelgesi">Dönemler</a>
+        <a href="#fan-notu">Fan Notu</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="icerik">
+    <section class="hero section-spacing" id="hero">
+      <div class="hero-media">
+        <img
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20@%20Shepherds%20Bush%20Empire.jpg?width=1600"
+          alt="Arctic Monkeys'in canlı konser performansından geniş sahne görüntüsü"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        >
+      </div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Dijital radyo • dergi estetiği • gece yarısı atmosferi</p>
+          <h1>Arctic Monkeys Dünyasına Hoş Geldin</h1>
+          <p class="hero-text">
+            Müzik, atmosfer, albümler ve unutulmaz sözlerle yaşayan özel bir fan deneyimi.
+            Bu sayfa; karanlık bir kulüp ışığı, şık bir plak dükkânı ve modern bir müzik dergisinin
+            aynı anda nefes aldığı bir alan gibi tasarlandı.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#radyo" data-player-action="play">Şimdi Dinle</a>
+            <a class="btn btn-secondary" href="#albumler">Albümleri Keşfet</a>
+            <a class="btn btn-ghost" href="#sozler">Şarkı Sözlerine Git</a>
+          </div>
+
+          <div class="hero-stats">
+            <article class="stat-card" data-reveal>
+              <span>07</span>
+              <p>Stüdyo albümü boyunca değişen ama kimliğini koruyan bir ses evreni.</p>
+            </article>
+            <article class="stat-card" data-reveal>
+              <span>10</span>
+              <p>Sayfaya bağlanan örnek parça ile çalışan özel fan radyo düzeni.</p>
+            </article>
+            <article class="stat-card" data-reveal>
+              <span>∞</span>
+              <p>Gece sürüşü, şehir neonları ve retro-rock estetiğini taşıyan ruh.</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel" data-reveal>
+          <div class="panel-glow" aria-hidden="true"></div>
+          <p class="hero-panel__kicker">Şu anda sahnede</p>
+          <h2>Arctic Monkeys Radyo</h2>
+          <p>
+            Üstte sabit duran radyo alanı ile sayfada gezerken müzik kesilmez.
+            Bir parçayı anında seç, karışık moda geç, tekrar düzenini değiştir
+            ve tüm siteyi müzik akarken keşfet.
+          </p>
+
+          <ul class="hero-panel__list">
+            <li>Canlı ilerleme çubuğu ve süre takibi</li>
+            <li>Tek tıkla parça değiştiren şarkı kartları</li>
+            <li>Mobil, tablet ve masaüstünde akıcı deneyim</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="about section-spacing" id="hakkinda">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Kısa portre</p>
+          <h2>Arctic Monkeys kimdir?</h2>
+          <p>
+            Sheffield çıkışlı Arctic Monkeys; sokak gözlemleriyle başlayan anlatısını zamanla
+            daha sinematik, daha zarif ve daha cesur bir ses tasarımına taşıyan bir grup.
+            Erken dönem enerjisi, orta dönem karanlığı ve son dönem lounge-uzay estetiği,
+            onları modern rock tarihinin en karakter sahibi topluluklarından biri hâline getiriyor.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-card" data-reveal>
+            <span class="card-index">01</span>
+            <h3>Şehirden sahneye</h3>
+            <p>
+              İlk dönem şarkılarında geceler, kuyruklar, hızlı diyaloglar ve gözlem gücü vardır.
+              Bu ham enerji hâlâ grubun omurgası gibi hissedilir.
+            </p>
+          </article>
+
+          <article class="about-card" data-reveal>
+            <span class="card-index">02</span>
+            <h3>Her dönemde yeni bir kostüm</h3>
+            <p>
+              Desert rock gölgeleri, psikedelik detaylar, lounge piyanolar ve sinematik yaylılar;
+              her albüm, aynı karakterin farklı bir geceye çıkması gibi.
+            </p>
+          </article>
+
+          <article class="about-card" data-reveal>
+            <span class="card-index">03</span>
+            <h3>Karizma ve minimalizm</h3>
+            <p>
+              Abartısız ama baskın bir duruşları var. Bu yüzden tasarım dili de yüksek sesli değil;
+              kontrollü, rafine ve iz bırakan bir tarafta duruyor.
+            </p>
+          </article>
+        </div>
+
+        <div class="members-grid">
+          <article class="member-card" data-reveal>
+            <div class="member-media">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Alex%20Turner%20of%20the%20Arctic%20Monkeys.jpg?width=900"
+                alt="Alex Turner canlı performans sırasında sahnede"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+            <div class="member-content">
+              <span class="member-role">Vokal / gitar</span>
+              <h3>Alex Turner</h3>
+              <p>Şiirsel cümleleri, teatral sahne duruşu ve dönemleri birbirine bağlayan ana ses.</p>
+            </div>
+          </article>
+
+          <article class="member-card" data-reveal>
+            <div class="member-media">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20@%20Roseland.jpg?width=900"
+                alt="Jamie Cook sahnede gitarıyla performans sergilerken"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+            <div class="member-content">
+              <span class="member-role">Gitar</span>
+              <h3>Jamie Cook</h3>
+              <p>Kirli tonlar, rif omurgası ve grubun karanlık dokusuna yön veren dengeli yapı.</p>
+            </div>
+          </article>
+
+          <article class="member-card" data-reveal>
+            <div class="member-media">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Nick%20O%27Malley.jpg?width=900"
+                alt="Nick O'Malley canlı performans sırasında bas gitarıyla"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+            <div class="member-content">
+              <span class="member-role">Bas</span>
+              <h3>Nick O'Malley</h3>
+              <p>Şarkılara gövde veren, modern ve sürükleyici alt frekans hissinin güçlü merkezi.</p>
+            </div>
+          </article>
+
+          <article class="member-card" data-reveal>
+            <div class="member-media">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Matt%20Helders%20Roskilde%202014.jpg?width=900"
+                alt="Matt Helders davul performansı sırasında sahnede"
+                loading="lazy"
+                decoding="async"
+              >
+            </div>
+            <div class="member-content">
+              <span class="member-role">Davul</span>
+              <h3>Matt Helders</h3>
+              <p>Patlayan geçişleri ve dans ettiren vuruşlarıyla grubun nabzını yükselten motor.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="songs section-spacing" id="sarkilar">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Öne çıkan seçkiler</p>
+          <h2>Parçayı seç, yayını değiştir</h2>
+          <p>
+            Aşağıdaki kartların her biri üstteki Arctic Monkeys Radyo sistemine bağlı.
+            Beğendiğin atmosferi seçtiğinde yayın doğrudan o parçaya geçer.
+          </p>
+        </div>
+
+        <div class="song-grid" id="songGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="albums section-spacing" id="albumler">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Diskografi atlası</p>
+          <h2>Albüm dönemleri</h2>
+          <p>
+            Her albüm kendi ışığına, kendi sokak dokusuna ve kendi gece saatine sahip.
+            Aşağıdaki kartlar bu değişimi poster hissiyle özetliyor.
+          </p>
+        </div>
+
+        <div class="album-grid">
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-debut">
+              <span>2006</span>
+              <strong>Whatever People Say I Am,<br>That’s What I’m Not</strong>
+            </div>
+            <div class="album-copy">
+              <h3>Whatever People Say I Am, That’s What I’m Not</h3>
+              <p class="album-meta">2006 • Keskin • sokak gözlemi • acele eden gençlik</p>
+              <p>
+                Erken dönem yoğunluğu, hızlı hikâyeler ve keskin gitarlarla gelen o ilk patlama.
+                Hâlâ grubun en diri açılışlarından biri.
+              </p>
+            </div>
+          </article>
+
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-fwn">
+              <span>2007</span>
+              <strong>Favourite<br>Worst Nightmare</strong>
+            </div>
+            <div class="album-copy">
+              <h3>Favourite Worst Nightmare</h3>
+              <p class="album-meta">2007 • Hızlı • parlak • geceye koşan enerji</p>
+              <p>
+                Daha çarpıcı tempolar, daha sıkı davullar ve gergin ama çekici bir şehir hissi.
+                Özellikle sahne enerjisiyle öne çıkan dönem.
+              </p>
+            </div>
+          </article>
+
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-humbug">
+              <span>2009</span>
+              <strong>Humbug</strong>
+            </div>
+            <div class="album-copy">
+              <h3>Humbug</h3>
+              <p class="album-meta">2009 • Karanlık • çöl tozu • psikedelik gerilim</p>
+              <p>
+                Loş ışık, yankılı gitarlar ve daha ağır bir hava. Grubun gölgeyle en şık konuştuğu
+                albümlerden biri.
+              </p>
+            </div>
+          </article>
+
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-sias">
+              <span>2011</span>
+              <strong>Suck It<br>and See</strong>
+            </div>
+            <div class="album-copy">
+              <h3>Suck It and See</h3>
+              <p class="album-meta">2011 • Romantik • geniş • yaz gecesi parıltısı</p>
+              <p>
+                Daha açık ufuklar, daha melodik bir yapı ve grubun yumuşayan ama karakterini
+                bırakmayan yüzü.
+              </p>
+            </div>
+          </article>
+
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-am">
+              <span>2013</span>
+              <strong>AM</strong>
+            </div>
+            <div class="album-copy">
+              <h3>AM</h3>
+              <p class="album-meta">2013 • Gece sürüşü • ağır groove • modern ikon</p>
+              <p>
+                Siyah deri, neon yansıması, vurucu baslar ve herkesin hafızasına kazınan o gece ritmi.
+                Popüler kültürde ayrı bir tepe noktası.
+              </p>
+            </div>
+          </article>
+
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-tbhc">
+              <span>2018</span>
+              <strong>Tranquility Base<br>Hotel & Casino</strong>
+            </div>
+            <div class="album-copy">
+              <h3>Tranquility Base Hotel & Casino</h3>
+              <p class="album-meta">2018 • Lounge • retro-fütürist • gözlemci</p>
+              <p>
+                Ay otelinde geçen bir gece gibi; piyano merkezli, ironik ve sahneye teatral bir ışık
+                getiren özel dönem.
+              </p>
+            </div>
+          </article>
+
+          <article class="album-card" data-reveal>
+            <div class="album-cover cover-car">
+              <span>2022</span>
+              <strong>The Car</strong>
+            </div>
+            <div class="album-copy">
+              <h3>The Car</h3>
+              <p class="album-meta">2022 • Sinematik • kadife • gece sonrası dinginlik</p>
+              <p>
+                Yaylıların ve zarif düzenlemelerin öne çıktığı, gösterişli değil ama çok rafine bir
+                final salonu hissi.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="quotes section-spacing" id="sozler">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Kısa alıntılar</p>
+          <h2>Şarkı sözlerinden poster parçaları</h2>
+          <p>
+            Uzun anlatımlar yerine birkaç keskin satır. Arctic Monkeys hissi bazen tek bir cümlede
+            tüm geceyi özetleyebilir.
+          </p>
+        </div>
+
+        <div class="quote-grid">
+          <article class="quote-card" data-reveal>
+            <span class="quote-tag">505</span>
+            <blockquote>“I crumble completely when you cry”</blockquote>
+          </article>
+          <article class="quote-card" data-reveal>
+            <span class="quote-tag">Do I Wanna Know?</span>
+            <blockquote>“Do I wanna know?”</blockquote>
+          </article>
+          <article class="quote-card" data-reveal>
+            <span class="quote-tag">Why’d You Only Call Me When You’re High?</span>
+            <blockquote>“The mirror's image tells me it's home time”</blockquote>
+          </article>
+          <article class="quote-card" data-reveal>
+            <span class="quote-tag">Arabella</span>
+            <blockquote>“Arabella's got some interstellar-gator skin boots”</blockquote>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery section-spacing" id="galeri">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Atmosfer duvarı</p>
+          <h2>Gecenin görsel katmanları</h2>
+          <p>
+            Sahne ışıkları, plak dokuları, yolda geçen saatler ve kulüp sonrası sessizlik...
+            Bu galeri, grubun estetiğini fotoğrafik bir duygu haritası gibi hissettirmek için tasarlandı.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-card gallery-card--large" data-reveal>
+            <button
+              class="gallery-button"
+              type="button"
+              data-lightbox-src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20-%20Orange%20Stage%20-%20Roskilde%20Festival%202014.jpg?width=1600"
+              data-lightbox-alt="Arctic Monkeys'in Roskilde Festival 2014 performansından geniş sahne görünümü"
+            >
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20-%20Orange%20Stage%20-%20Roskilde%20Festival%202014.jpg?width=1600"
+                alt="Arctic Monkeys'in Roskilde Festival 2014 performansından geniş sahne görünümü"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="gallery-label">Roskilde 2014</span>
+            </button>
+          </figure>
+
+          <figure class="gallery-card" data-reveal>
+            <button
+              class="gallery-button"
+              type="button"
+              data-lightbox-src="https://commons.wikimedia.org/wiki/Special:FilePath/ArcticMonkeysRAH070618%20%2819%29%20%2828799629968%29.jpg?width=1400"
+              data-lightbox-alt="Arctic Monkeys'in Royal Albert Hall 2018 performansından sahne anı"
+            >
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/ArcticMonkeysRAH070618%20%2819%29%20%2828799629968%29.jpg?width=1400"
+                alt="Arctic Monkeys'in Royal Albert Hall 2018 performansından sahne anı"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="gallery-label">Royal Albert Hall 2018</span>
+            </button>
+          </figure>
+
+          <figure class="gallery-card gallery-card--tall" data-reveal>
+            <button
+              class="gallery-button"
+              type="button"
+              data-lightbox-src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20%281%29.jpg?width=1200"
+              data-lightbox-alt="Alex Turner'ın Sziget Festival 2022 performansından yakın plan görüntü"
+            >
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20%281%29.jpg?width=1200"
+                alt="Alex Turner'ın Sziget Festival 2022 performansından yakın plan görüntü"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="gallery-label">Sziget 2022</span>
+            </button>
+          </figure>
+
+          <figure class="gallery-card" data-reveal>
+            <button
+              class="gallery-button"
+              type="button"
+              data-lightbox-src="https://commons.wikimedia.org/wiki/Special:FilePath/Alex%20Turner%20and%20Nick%20O%27Malley%20Roskilde%202014.jpg?width=1200"
+              data-lightbox-alt="Alex Turner ve Nick O'Malley'nin Roskilde 2014 performansından kare"
+            >
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Alex%20Turner%20and%20Nick%20O%27Malley%20Roskilde%202014.jpg?width=1200"
+                alt="Alex Turner ve Nick O'Malley'nin Roskilde 2014 performansından kare"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="gallery-label">Alex & Nick / Roskilde</span>
+            </button>
+          </figure>
+
+          <figure class="gallery-card" data-reveal>
+            <button
+              class="gallery-button"
+              type="button"
+              data-lightbox-src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20@%20HSBC%20Arena,%20RJ%20%2839921720842%29.jpg?width=1400"
+              data-lightbox-alt="Arctic Monkeys'in HSBC Arena Rio performansından sahne görüntüsü"
+            >
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20@%20HSBC%20Arena,%20RJ%20%2839921720842%29.jpg?width=1400"
+                alt="Arctic Monkeys'in HSBC Arena Rio performansından sahne görüntüsü"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="gallery-label">Rio gecesi</span>
+            </button>
+          </figure>
+
+          <figure class="gallery-card gallery-card--wide" data-reveal>
+            <button
+              class="gallery-button"
+              type="button"
+              data-lightbox-src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20%284%29.jpg?width=1600"
+              data-lightbox-alt="Arctic Monkeys'in Sziget Festival 2022 performansından kalabalık ve sahne görüntüsü"
+            >
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Arctic%20Monkeys%20%284%29.jpg?width=1600"
+                alt="Arctic Monkeys'in Sziget Festival 2022 performansından kalabalık ve sahne görüntüsü"
+                loading="lazy"
+                decoding="async"
+              >
+              <span class="gallery-label">Kalabalığın içinden / Sziget</span>
+            </button>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="timeline-section section-spacing" id="zaman-cizelgesi">
+      <div class="container">
+        <div class="section-heading" data-reveal>
+          <p class="eyebrow">Zaman çizelgesi</p>
+          <h2>Dönemler ve atmosfer değişimi</h2>
+          <p>
+            Arctic Monkeys tarihinde ilerlemek, aynı karakterin farklı ışıklarda nasıl göründüğünü
+            izlemek gibi. Her dönem başka bir şehir saatine denk geliyor.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2006</span>
+            <div class="timeline-card">
+              <h3>Hız, kalabalık ve ilk patlama</h3>
+              <p>İlk albümle gelen sokağa yakın anlatım, acele eden ritimler ve keskin bakış açısı.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2007</span>
+            <div class="timeline-card">
+              <h3>Daha sert, daha parlak</h3>
+              <p>Davullar hızlanıyor, köşeler keskinleşiyor ve gecenin kalp atışı daha yüksek duyuluyor.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2009</span>
+            <div class="timeline-card">
+              <h3>Gölgeye geçiş</h3>
+              <p>Humbug dönemiyle birlikte ses evrenine çöl tozu, yankı ve ağır bir karizma ekleniyor.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2011</span>
+            <div class="timeline-card">
+              <h3>Daha açık ufuk</h3>
+              <p>Melodi ön plana çıkıyor; grup daha ferah ama hâlâ kendine has bir tavırla ilerliyor.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2013</span>
+            <div class="timeline-card">
+              <h3>Gece sürüşü ikonu</h3>
+              <p>AM, modern rock içinde ayrı bir çizgiye dönüşüyor: ağır groove, düşük ışık, yüksek etki.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-year">2018 → 2022</span>
+            <div class="timeline-card">
+              <h3>Lounge, uzay ve sinematik zarafet</h3>
+              <p>
+                Son dönemlerde grup daha teatral, daha rafine ve daha film sahnesi gibi duyulan bir
+                dünyanın kapılarını aralıyor.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fan-note section-spacing" id="fan-notu">
+      <div class="container fan-note__grid">
+        <div class="fan-note__copy" data-reveal>
+          <p class="eyebrow">Fan notu</p>
+          <h2>Bu alan bir hayran projesi olarak tasarlandı</h2>
+          <p>
+            Burası resmi bir tanıtım sayfasından çok, müzik açıp bir süre atmosferde kalmak isteyen
+            dinleyiciler için hazırlandı. Şarkılar üstte akarken albüm dönemleri arasında gezebilir,
+            söz parçalarına bakabilir ve Arctic Monkeys estetiğini tek bir akış içinde hissedebilirsin.
+          </p>
+          <p>
+            Tasarımın amacı sadece bilgi vermek değil; ilk bakışta “vay be” dedirten, sakin ama güçlü
+            bir sahne hissi oluşturmak.
+          </p>
+        </div>
+
+        <div class="fan-note__panel" data-reveal>
+          <span class="panel-badge">Bu sitede neler var?</span>
+          <ul>
+            <li>Sabit üst radyo deneyimi</li>
+            <li>Türkçe içerikli premium fan arayüzü</li>
+            <li>Albüm, söz, görsel ve dönem akışı</li>
+            <li>Kolayca geliştirilebilir temiz dosya yapısı</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <span class="footer-kicker">Arctic Monkeys Radyo</span>
+        <p>
+          Bu site bir hayran çalışmasıdır ve resmi Arctic Monkeys sitesi değildir.
+          Tüm marka ve eser hakları ilgili sahiplerine aittir.
+        </p>
+        <p class="footer-credit">
+          Fotoğraf kaynakları: Creative Commons lisanslı
+          <a href="https://commons.wikimedia.org/wiki/Category:Arctic_Monkeys" target="_blank" rel="noreferrer">Wikimedia Commons Arctic Monkeys arşivi</a>.
+        </p>
+      </div>
+
+      <div class="footer-socials" aria-label="Sosyal alanlar">
+        <button type="button" aria-label="Instagram alanı">IG</button>
+        <button type="button" aria-label="YouTube alanı">YT</button>
+        <button type="button" aria-label="Spotify alanı">SP</button>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="lightbox" id="lightbox">
+    <button class="lightbox-close" type="button" aria-label="Görseli kapat">Kapat</button>
+    <img id="lightboxImage" alt="">
+    <p id="lightboxCaption"></p>
+  </dialog>
+</body>
+</html>
